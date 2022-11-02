@@ -1,3 +1,13 @@
+# Reddit Client
+
+Hello again!! Wellcome to my third [CodeCademy](https://www.codecademy.com/) portfolio, in this project I implemented new skills such as react.js and react-redux toolkit, it's a pleasure for me to show how much I've improved since my last two projects.
+
+For this project I used a date parser library named _Moment_ so for everything to work properly you'll have to run `npm install`
+
+Thank you for joining me in my coding journey!!
+
+---
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.

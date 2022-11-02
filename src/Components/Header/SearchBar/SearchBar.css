@@ -1,0 +1,23 @@
+.SearchBar form {
+  display: flex;
+  gap: .75rem;
+}
+
+.SearchBar input {
+  width: 22.5rem;
+  background-color: #eee;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: .2rem;
+}
+
+.SearchBar button {
+  background-color: #fff;
+  border: none;
+}
+
+.SearchBar button i {
+  cursor: pointer;
+  font-size: 1.35rem;
+  color: #888;
+}

@@ -1,0 +1,29 @@
+.Header {
+  padding: 1rem 0;
+  display: grid;
+  grid: 1fr / 1fr 1.85fr;
+  box-shadow: 0 8px 20px 6px #ddd;
+  margin-bottom: 1rem;
+}
+
+.logo-title {
+  justify-self: start;
+  cursor: pointer;
+  margin-left: 4rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.logo-title i {
+  font-size: 2rem;
+  color: var(--custom-blue);
+}
+
+.logo-title span {
+  font-weight: 700;
+}
+
+.spans span:first-child {
+  color: var(--custom-blue);
+}
