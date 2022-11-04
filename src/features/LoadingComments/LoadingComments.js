@@ -21,9 +21,6 @@ const LoadingComments = () => {
   return (
     <div className="LoadingComments">
       <div className="wrapper">{spinner}</div>
-      <div className="wrapper">{spinner}</div>
-      <div className="wrapper">{spinner}</div>
-      <div className="wrapper">{spinner}</div>
     </div>
   );
 };

@@ -2,9 +2,10 @@ import "./SearchBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterPosts,
+  resetNoResults,
   selectSearchParam,
   updateSearchParam,
-} from "../../../AppSlice";
+} from "../../Posts/PostsSlice";
 
 import { updateSearchTerm } from "./SearchBarSlice";
 
@@ -22,6 +23,7 @@ const SearchBar = () => {
       dispatch(filterPosts("reset"));
       return;
     }
+    dispatch(resetNoResults());
     dispatch(updateSearchTerm(searchParam));
     dispatch(filterPosts(searchParam.toLowerCase()));
   };

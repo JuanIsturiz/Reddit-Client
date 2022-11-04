@@ -20,3 +20,10 @@
   border-radius: .25rem;
   background-color: var(--custom-blue);
 }
+
+.error {
+  /* background-color: #fff; */
+  height: 7rem;
+  display: grid;
+  place-items: center;
+}

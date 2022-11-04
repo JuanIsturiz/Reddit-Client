@@ -5,7 +5,7 @@ import {
   selectNoResults,
   updateSearchParam,
   selectIndexedPosts,
-} from "../../AppSlice";
+} from "./PostsSlice";
 import "./Posts.css";
 import { useState } from "react";
 import { selectSearchTerm } from "../Header/SearchBar/SearchBarSlice";
@@ -38,16 +38,20 @@ const Posts = ({ posts }) => {
         </div>
       ) : (
         <div className="Posts">
-          {postKeys.length > 0
-            ? postKeys.map((post, idx) => (
-                <Post
-                  key={idx}
-                  post={indexedPosts[post]}
-                  onSelect={handleSelectedComment}
-                  selCom={selectedComment}
-                />
-              ))
-            : "no posts found"}
+          {postKeys.length > 0 ? (
+            postKeys.map((post, idx) => (
+              <Post
+                key={idx}
+                post={indexedPosts[post]}
+                onSelect={handleSelectedComment}
+                selectedComment={selectedComment}
+              />
+            ))
+          ) : (
+            <div className="error">
+              <h2>Unable to get posts from server :(</h2>
+            </div>
+          )}
         </div>
       )}
     </>

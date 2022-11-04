@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar/SearchBar";
 import "./Header.css";
-import { setSubReddit } from "../../AppSlice";
+import { setSubReddit } from "../../features/Posts/PostsSlice";
 import { selectReddit } from "../SubReddits/SubRedditsSlice";
 import { useDispatch } from "react-redux";
 

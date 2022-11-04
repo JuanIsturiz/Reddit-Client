@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from "../AppSlice";
-import subRedditsReducer from "../Components/SubReddits/SubRedditsSlice";
-import searchBarReducer from "../Components/Header/SearchBar/SearchBarSlice";
+import postsReducer from "../features/Posts/PostsSlice";
+import subRedditsReducer from "../features/SubReddits/SubRedditsSlice";
+import searchBarReducer from "../features/Header/SearchBar/SearchBarSlice";
 export const store = configureStore({
   reducer: {
     posts: postsReducer,

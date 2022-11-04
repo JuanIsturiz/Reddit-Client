@@ -4,22 +4,26 @@
   //TODO refactor posts to an object
   //TODO fix comments hide action
   //TODO refactor slice
+  //TODO make commit fixing searchbar no results and changing up arrow color folder restructuring
+  //TODO refactor folders
+  TODO add dark mode feature
   TODO make it responsive [display none on max width]
+  TODO add try catch feature to async functions
 */
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "./Components/Header/Header";
-import Posts from "./Components/Posts/Posts";
-import SubReddits from "./Components/SubReddits/SubReddits";
+import Header from "./features/Header/Header";
+import Posts from "./features/Posts/Posts";
+import SubReddits from "./features/SubReddits/SubReddits";
 import {
   loadIndexedPosts,
   selectIndexedPosts,
   selectIsLoading,
   selectSubReddit,
-} from "./AppSlice";
-import { selectFilteredPosts } from "./AppSlice";
-import LoadingPosts from "./Components/LoadingPosts/LoadingPosts";
+} from "./features/Posts/PostsSlice";
+import { selectFilteredPosts } from "./features/Posts/PostsSlice";
+import LoadingPosts from "./features/LoadingPosts/LoadingPosts";
 import "./App.css";
 
 function App() {

@@ -3,7 +3,12 @@ import { SUB_REDDITS } from "../../utilities/subReddits";
 import { useDispatch, useSelector } from "react-redux";
 import { selectReddit } from "./SubRedditsSlice";
 import { selectSelected } from "./SubRedditsSlice";
-import { setSubReddit, filterPosts, resetNoResults } from "../../AppSlice";
+import {
+  setSubReddit,
+  filterPosts,
+  resetNoResults,
+  updateSearchParam,
+} from "../../features/Posts/PostsSlice";
 import { useState, useEffect } from "react";
 
 const SubReddits = () => {
@@ -22,6 +27,7 @@ const SubReddits = () => {
     dispatch(setSubReddit(e.target.id.toLowerCase()));
     dispatch(resetNoResults());
     dispatch(selectReddit(e.target.id));
+    dispatch(updateSearchParam(""));
   };
   return (
     <div className="SubReddits" style={{ height: !drop ? "6rem" : "auto" }}>

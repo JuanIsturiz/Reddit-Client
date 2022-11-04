@@ -5,13 +5,13 @@ import {
   loadAsyncComments,
   selectIsLoadingComment,
   selectSubReddit,
-} from "../../../AppSlice";
-import { icons } from "./icons";
+} from "../PostsSlice";
+import { icons } from "../../../utilities/icons";
 import "./Post.css";
 import Comments from "./Comments/Comments";
 import LoadingComments from "../../LoadingComments/LoadingComments";
 
-const Post = ({ post, onSelect, selCom }) => {
+const Post = ({ post, onSelect, selectedComment }) => {
   const {
     score,
     title,
@@ -27,22 +27,9 @@ const Post = ({ post, onSelect, selCom }) => {
   const [showComments, setShowComments] = useState(false);
   const subReddit = useSelector(selectSubReddit);
   const isLoadingComment = useSelector(selectIsLoadingComment);
-  const handleScoreIcon = ({ target }) => {
-    if (target.id === "up") {
-      if (target.classList[0] === "default") {
-        setScoreIcon("up");
-        return;
-      }
-      setScoreIcon("default");
-    }
-    if (target.id === "down") {
-      if (target.classList[0] === "default") {
-        setScoreIcon("down");
-        return;
-      }
-      setScoreIcon("default");
-    }
-  };
+
+  const handleArrowClick = ({ target }) =>
+    setScoreIcon((prev) => (prev === target.id ? "default" : target.id));
 
   const handleComments = () => {
     if (comments.length > 0) {
@@ -59,18 +46,14 @@ const Post = ({ post, onSelect, selCom }) => {
   return (
     <div className="Post">
       <div className="score">
-        <svg
-          style={icons.style}
-          id="up"
-          className={scoreIcon !== "up" ? "default" : "up"}
-          onClick={handleScoreIcon}
-        >
+        <svg style={icons.style} id="up" onClick={handleArrowClick}>
           <path
             d={
               icons.paths.arrowUp[
                 scoreIcon !== "up" ? "unselected" : "selected"
               ]
             }
+            style={{ color: scoreIcon === "up" ? "#3d5af1" : "" }}
           ></path>
         </svg>
         <span
@@ -79,24 +62,20 @@ const Post = ({ post, onSelect, selCom }) => {
               scoreIcon === "default"
                 ? ""
                 : scoreIcon === "up"
-                ? "#45b81f"
+                ? "#3d5af1"
                 : "#ff304f",
           }}
         >
           {score >= 1000 ? `${(score / 1000).toFixed(1)}k` : score}
         </span>
-        <svg
-          style={icons.style}
-          id="down"
-          className={scoreIcon !== "down" ? "default" : "down"}
-          onClick={handleScoreIcon}
-        >
+        <svg style={icons.style} id="down" onClick={handleArrowClick}>
           <path
             d={
               icons.paths.arrowDown[
                 scoreIcon !== "down" ? "unselected" : "selected"
               ]
             }
+            style={{ color: scoreIcon === "down" ? "#ff304f" : "" }}
           ></path>
         </svg>
       </div>
@@ -121,7 +100,7 @@ const Post = ({ post, onSelect, selCom }) => {
                 <path
                   d={icons.paths.comment}
                   style={{
-                    fill: isLoadingComment ? "#ddd" : "",
+                    fill: comments.length > 0 ? "#3d5af1" : "",
                   }}
                 ></path>
               </svg>
@@ -132,7 +111,7 @@ const Post = ({ post, onSelect, selCom }) => {
               </span>
             </div>
           </div>
-          {showComments && isLoadingComment && selCom === id && (
+          {showComments && isLoadingComment && selectedComment === id && (
             <LoadingComments />
           )}
           {showComments && comments.length > 0 && (

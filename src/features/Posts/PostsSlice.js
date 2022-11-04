@@ -1,4 +1,4 @@
-/* import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   indexedPosts: {},
@@ -184,4 +184,3 @@ export const { setSubReddit, filterPosts, updateSearchParam, resetNoResults } =
   postsSlice.actions;
 
 export default postsSlice.reducer;
- */
