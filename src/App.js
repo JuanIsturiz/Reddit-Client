@@ -6,8 +6,8 @@
   //TODO refactor slice
   //TODO make commit fixing searchbar no results and changing up arrow color folder restructuring
   //TODO refactor folders
-  TODO add dark mode feature
-  TODO make it responsive [display none on max width]
+  //TODO make it responsive [display none on max width]
+  //TODO add dark mode feature
   TODO add try catch feature to async functions
 */
 
@@ -25,6 +25,7 @@ import {
 import { selectFilteredPosts } from "./features/Posts/PostsSlice";
 import LoadingPosts from "./features/LoadingPosts/LoadingPosts";
 import "./App.css";
+import { selectPalettes, selectTheme } from "./AppSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,13 +33,21 @@ function App() {
   const isLoading = useSelector(selectIsLoading);
   const indexedPosts = useSelector(selectIndexedPosts);
   const filteredPosts = useSelector(selectFilteredPosts);
+  const theme = useSelector(selectTheme);
+  const palettes = useSelector(selectPalettes);
 
   useEffect(() => {
     dispatch(loadIndexedPosts(sub));
   }, [sub, dispatch]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundColor: palettes[theme].backgroundColor,
+        color: palettes[theme].color,
+      }}
+    >
       <Header />
       <main className="page">
         {isLoading ? (

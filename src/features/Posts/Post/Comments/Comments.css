@@ -4,6 +4,8 @@
   align-items: center;
 }
 
+
+
 .comments span {
   font-size: .75rem;
 }
@@ -33,4 +35,8 @@
 .comment span:first-child {
   color: var(--custom-blue);
   font-weight: 700;
+}
+
+.comment>* {
+  pointer-events: none;
 }

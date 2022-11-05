@@ -1,19 +1,31 @@
 import SearchBar from "./SearchBar/SearchBar";
 import "./Header.css";
-import { setSubReddit } from "../../features/Posts/PostsSlice";
+import {
+  filterPosts,
+  resetNoResults,
+  setSubReddit,
+  updateSearchParam,
+} from "../../features/Posts/PostsSlice";
 import { selectReddit } from "../SubReddits/SubRedditsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Switch from "./Switch/Switch";
+import { selectPalettes, selectTheme } from "../../AppSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
+  const palettes = useSelector(selectPalettes);
 
   const handleLogoClick = () => {
-    dispatch(selectReddit(""));
     dispatch(setSubReddit("popular"));
+    dispatch(filterPosts("reset"));
+    dispatch(selectReddit(""));
+    dispatch(resetNoResults());
+    dispatch(updateSearchParam(""));
   };
   return (
     <header>
-      <div className="Header">
+      <div className="Header" style={palettes[theme]}>
         <div className="logo-title" onClick={handleLogoClick}>
           <i className="fa-brands fa-reddit"></i>
           <div className="spans">
@@ -22,6 +34,7 @@ const Header = () => {
           </div>
         </div>
         <SearchBar />
+        <Switch />
       </div>
     </header>
   );

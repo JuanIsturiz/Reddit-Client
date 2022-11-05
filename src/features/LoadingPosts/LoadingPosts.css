@@ -114,3 +114,9 @@
     opacity: 0;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .LoadingPosts {
+    padding-right: 1rem;
+  }
+}

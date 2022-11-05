@@ -1,8 +1,7 @@
 .SubReddits {
   align-self: start;
-  overflow: hidden;
   background-color: #fff;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1rem;
   border-radius: .3rem;
   box-shadow: 0 8px 20px 6px #ddd;
 }
@@ -39,7 +38,7 @@
 }
 
 .selected {
-  background-color: rgba(0, 38, 255, 0.25);
+  background-color: rgba(0, 38, 255, 0.1);
   color: var(--custom-blue);
   border-left: .25rem solid var(--custom-blue);
 }
@@ -51,4 +50,10 @@
 .sub img,
 .sub p {
   pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .SubReddits {
+    display: none;
+  }
 }

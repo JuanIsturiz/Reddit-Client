@@ -8,10 +8,12 @@ import {
 } from "../../Posts/PostsSlice";
 
 import { updateSearchTerm } from "./SearchBarSlice";
+import { selectTheme } from "../../../AppSlice";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const searchParam = useSelector(selectSearchParam);
+  const theme = useSelector(selectTheme);
   const handleChange = (e) => {
     if (e.target.value === "") updateSearchParam("");
     dispatch(updateSearchParam(e.target.value));
@@ -36,6 +38,10 @@ const SearchBar = () => {
           type="text"
           placeholder="Search"
           onChange={handleChange}
+          style={{
+            backgroundColor: theme === "light" ? "#eee" : "#555",
+            color: theme === "light" ? "#555" : "#eee",
+          }}
         />
         <button>
           <i className="fa-solid fa-magnifying-glass"></i>

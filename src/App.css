@@ -1,10 +1,18 @@
 .App {
   width: 100%;
   color: var(--custom-dark-gray);
+  background-color: #fff;
 }
 
 .page {
   display: grid;
   grid: 1fr / 3fr 1fr;
   gap: 1rem
+}
+
+@media only screen and (max-width: 600px) {
+  .page {
+    grid: 1fr/ 1fr;
+    gap: none;
+  }
 }

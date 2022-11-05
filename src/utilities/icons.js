@@ -6,8 +6,8 @@ export const icons = {
     viewBox: "0 0 512 512",
     version: "1.2",
     baseProfile: "tiny",
-    height: "1.5rem",
-    width: "1.5rem",
+    /*     height: "1.5rem",
+    width: "1.5rem", */
     xmlns: "http://www.w3.org/2000/svg",
   },
   paths: {
