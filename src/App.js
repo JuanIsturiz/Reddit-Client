@@ -1,16 +1,3 @@
-/* 
-  //TODO add date
-  //TODO clean logPosts and loadComments
-  //TODO refactor posts to an object
-  //TODO fix comments hide action
-  //TODO refactor slice
-  //TODO make commit fixing searchbar no results and changing up arrow color folder restructuring
-  //TODO refactor folders
-  //TODO make it responsive [display none on max width]
-  //TODO add dark mode feature
-  TODO add try catch feature to async functions
-*/
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./features/Header/Header";

@@ -52,6 +52,7 @@
 
 
 .Post svg {
+  stroke-width: 0;
   cursor: pointer;
   stroke: var(--custom-soft-gray);
   fill: var(--custom-soft-gray);

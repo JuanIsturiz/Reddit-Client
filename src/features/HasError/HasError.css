@@ -1,0 +1,44 @@
+.error {
+  background-color: #fff;
+  box-shadow: 0 8px 20px 6px #ddd;
+  height: 7rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+.error i {
+  font-size: 2.5rem;
+  animation: float 2s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-.25rem);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  75% {
+    transform: translateY(.35rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .error {
+    margin-right: 1rem;
+  }
+}

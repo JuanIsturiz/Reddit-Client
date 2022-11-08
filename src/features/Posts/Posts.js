@@ -1,20 +1,19 @@
 import Post from "./Post/Post";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
-  resetNoResults,
   selectNoResults,
-  updateSearchParam,
   selectIndexedPosts,
+  selectHasError,
 } from "./PostsSlice";
 import "./Posts.css";
 import { useState } from "react";
-import { selectSearchTerm } from "../Header/SearchBar/SearchBarSlice";
+import NoResults from "../NoResults/NoResults";
+import HasError from "../HasError/HasError";
 
 const Posts = ({ posts }) => {
-  const dispatch = useDispatch();
   const noResults = useSelector(selectNoResults);
-  const searchTerm = useSelector(selectSearchTerm);
   const indexedPosts = useSelector(selectIndexedPosts);
+  const hasError = useSelector(selectHasError);
   const postKeys = Object.keys(posts);
   const [selectedComment, setSelectedComment] = useState("");
 
@@ -24,34 +23,18 @@ const Posts = ({ posts }) => {
 
   return (
     <>
-      {noResults ? (
-        <div className="not-found">
-          <h2>No Posts matching "{searchTerm}"</h2>
-          <button
-            onClick={() => {
-              dispatch(updateSearchParam(""));
-              dispatch(resetNoResults());
-            }}
-          >
-            Go home
-          </button>
-        </div>
-      ) : (
+      {hasError && <HasError />}
+      {!hasError && noResults && <NoResults />}
+      {!hasError && !noResults && postKeys.length > 0 && (
         <div className="Posts">
-          {postKeys.length > 0 ? (
-            postKeys.map((post, idx) => (
-              <Post
-                key={idx}
-                post={indexedPosts[post]}
-                onSelect={handleSelectedComment}
-                selectedComment={selectedComment}
-              />
-            ))
-          ) : (
-            <div className="error">
-              <h2>Unable to get posts from server :(</h2>
-            </div>
-          )}
+          {postKeys.map((post, idx) => (
+            <Post
+              key={idx}
+              post={indexedPosts[post]}
+              onSelect={handleSelectedComment}
+              selectedComment={selectedComment}
+            />
+          ))}
         </div>
       )}
     </>

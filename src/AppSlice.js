@@ -13,7 +13,7 @@ const initialState = {
     dark: {
       backgroundColor: "#333",
       color: "#ddd",
-      boxShadow: "0 8px 20px 6px #555",
+      boxShadow: "0 8px 20px 6px #444",
       hover: "#444",
       soft: "#888",
     },

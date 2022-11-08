@@ -9,7 +9,7 @@ import {
   resetNoResults,
   updateSearchParam,
 } from "../../features/Posts/PostsSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { selectPalettes, selectTheme } from "../../AppSlice";
 
 const SubReddits = () => {
@@ -33,38 +33,45 @@ const SubReddits = () => {
     dispatch(updateSearchParam(""));
   };
 
-  const handleHoverEnter = (e) => {
-    e.target.style.backgroundColor =
-      e.target.id !== selected
-        ? palettes[theme].hover
-        : "rgba(0, 38, 255, 0.2)";
-  };
-  const handleHoverLeave = (e) => {
+  const handleHoverEnter = useCallback(
+    (e) => {
+      e.target.style.backgroundColor =
+        e.target.id !== selected
+          ? palettes[theme].hover
+          : "rgba(0, 38, 255, 0.2)";
+    },
+    [palettes, theme, selected]
+  );
+  const handleHoverLeave = useCallback((e) => {
     e.target.style.backgroundColor = "";
-  };
+  }, []);
   return (
-    <div className="SubReddits" style={palettes[theme]}>
-      <h2>Subreddits</h2>
-      <ul className="sub-list" style={{ display: !drop ? "none" : "block" }}>
-        {SUB_REDDITS.map((sub, idx) => (
-          <li
-            key={`${idx}_${sub.reddit.toLowerCase()}`}
-            className={`sub ${selected === sub.reddit ? "selected" : ""}`}
-            id={sub.reddit}
-            onClick={handleClick}
-            onMouseEnter={handleHoverEnter}
-            onMouseLeave={handleHoverLeave}
-          >
-            <img
-              src={sub.src}
-              alt={sub.reddit.toLowerCase()}
-              style={{ borderColor: selected === sub.reddit ? "#3d5af1" : "" }}
-            />
-            <p style={{ color: palettes[theme].soft }}>{sub.reddit}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <aside>
+      <div className="SubReddits" style={palettes[theme]}>
+        <h2>Subreddits</h2>
+        <ul className="sub-list" style={{ display: !drop ? "none" : "block" }}>
+          {SUB_REDDITS.map((sub, idx) => (
+            <li
+              key={`${idx}_${sub.reddit.toLowerCase()}`}
+              className={`sub ${selected === sub.reddit ? "selected" : ""}`}
+              id={sub.reddit}
+              onClick={handleClick}
+              onMouseEnter={handleHoverEnter}
+              onMouseLeave={handleHoverLeave}
+            >
+              <img
+                src={sub.src}
+                alt={sub.reddit.toLowerCase()}
+                style={{
+                  borderColor: selected === sub.reddit ? "#3d5af1" : "",
+                }}
+              />
+              <p style={{ color: palettes[theme].soft }}>{sub.reddit}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
   );
 };
 

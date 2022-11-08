@@ -1,4 +1,5 @@
 import moment from "moment/moment";
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { selectPalettes, selectTheme } from "../../../../AppSlice";
 import "./Comments.css";
@@ -7,12 +8,15 @@ const Comments = ({ comments }) => {
   const theme = useSelector(selectTheme);
   const palettes = useSelector(selectPalettes);
 
-  const handleHoverEnter = (e) => {
-    e.target.style.boxShadow = palettes[theme].boxShadow;
-  };
-  const handleHoverLeave = (e) => {
+  const handleHoverEnter = useCallback(
+    (e) => {
+      e.target.style.boxShadow = palettes[theme].boxShadow;
+    },
+    [palettes, theme]
+  );
+  const handleHoverLeave = useCallback((e) => {
     e.target.style.boxShadow = "";
-  };
+  }, []);
 
   return (
     <div className="comments-list">
